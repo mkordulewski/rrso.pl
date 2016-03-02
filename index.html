@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RRSO.pl</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/main.css" rel="stylesheet">
+</head>
+<body ng-app="rrsoApp" ng-controller="HomeCtrl">
+
+<div class="container">
+    <h1>Kalkulator RRSO</h1>
+    <h3 class="page-header">Pożyczka</h3>
+    <div class="row form-group" ng-class="{'has-success': validateFloat(viewModel.wyplata), 'has-error': !validateFloat(viewModel.wyplata)}">
+        <label for="wyplata" class="col-md-6">Kwota pożyczki:</label>
+        <div class="col-md-5"><input id="wyplata" class="form-control" ng-model="viewModel.wyplata"/></div>
+    </div>
+    <h3 class="page-header">Spłaty</h3>
+    <div class="row form-group" ng-class="{'has-success': validateFloat(viewModel.kwotaRaty), 'has-error': !validateFloat(viewModel.kwotaRaty)}">
+        <label for="kwotaRaty" class="col-md-6">Kwota raty:</label>
+        <div class="col-md-5"><input id="kwotaRaty" class="form-control" ng-model="viewModel.kwotaRaty"/></div>
+    </div>
+    <div class="row form-group" ng-class="{'has-success': validateInteger(viewModel.liczbaRat), 'has-error': !validateInteger(viewModel.liczbaRat)}">
+        <label for="liczbaRat" class="col-md-6">Liczba rat:</label>
+        <div class="col-md-5"><input id="liczbaRat" class="form-control" ng-model="viewModel.liczbaRat"/></div>
+    </div>
+    <div class="row form-group" ng-class="{'has-success': validatePeriod(), 'has-error': !validatePeriod()}">
+        <label for="period" class="col-md-6">Cykl spłat rat:</label>
+        <div class="col-md-5">
+            <select id="period" class="form-control" ng-model="viewModel.period" convert-to-number>
+                <option value="7">tygodniowo</option>
+                <option value="30">miesięcznie</option>
+                <option value="91">kwartalnie</option>
+                <option value="182">półrocznie</option>
+                <option value="365">rocznie</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-5">
+            <button class="btn btn-primary col-md-12" ng-class="{'btn-danger': !validateData()}" ng-disabled="!validateData()" ng-click="estimateRRSO()">Oszacuj RRSO</button>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-md-6">RRSO:</label>
+        <div class="col-md-5">
+            <div class="input-group">
+                <input type="text" class="form-control" disabled="disabled" ng-model="viewModel.rrso" aria-label="RRSO w procentach">
+                <span class="input-group-addon">%</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+<footer>
+    <div>
+        <p>2016 &copy; Michał Kordulewski</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+<script src="static/lib/rrso.js" type="text/javascript"></script>
+<script src="static/js/main.js" type="text/javascript"></script>
+</body>
+</html>

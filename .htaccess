@@ -1,0 +1,4 @@
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^[^.]+\.(rrso\.pl)$ [NC]
+RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L,NE]
