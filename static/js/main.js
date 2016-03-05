@@ -41,22 +41,13 @@ app
             $scope.validatePeriod();
     };
     $scope.validateInteger = function (data) {
-        if (data == parseInt(data, 10))
-            return true;
-        else
-            return false;
+        return (data == parseInt(data, 10));
     };
     $scope.validateFloat = function (data) {
-        if (data == parseFloat(data, 10))
-            return true;
-        else
-            return false;
+        return (data == parseFloat(data, 10));
     };
     $scope.validatePeriod = function () {
-        if ($scope.viewModel.period=='7' || $scope.viewModel.period=='30' || $scope.viewModel.period=='91' || $scope.viewModel.period=='182' || $scope.viewModel.period=='365')
-            return true;
-        else
-            return false;
+        return ($scope.viewModel.period=='7' || $scope.viewModel.period=='30' || $scope.viewModel.period=='91' || $scope.viewModel.period=='182' || $scope.viewModel.period=='365');
     };
 })
 .directive('convertToNumber', function () {
