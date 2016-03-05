@@ -8,7 +8,7 @@ app
         kwotaRaty: 100,
         period: 30,
         rrso: null,
-        data: null,
+        data: null
     };
     $scope.estimateRRSO = function() {
         if ($scope.validateData()) {
