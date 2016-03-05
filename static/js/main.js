@@ -33,13 +33,13 @@ app
         } else {
             // TODO
         }
-    }
+    };
     $scope.validateData = function() {
         return $scope.validateFloat($scope.viewModel.wyplata) &&
             $scope.validateInteger($scope.viewModel.liczbaRat) &&
             $scope.validateFloat($scope.viewModel.kwotaRaty) &&
             $scope.validatePeriod();
-    }
+    };
     $scope.validateInteger = function (data) {
         if (data == parseInt(data, 10))
             return true;
